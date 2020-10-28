@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import formatCurrency from "../util";
-//import Fade from "react-reveal/Fade";
+import Fade from "react-reveal/Fade";
 //import { connect } from "react-redux";
 //import Modal from "react-modal";
 //import Zoom from "react-reveal/Zoom";
@@ -47,6 +47,7 @@ export default class Cart extends Component{
         )}
         <div>
                 <div className="cart">
+                    <Fade left cascade>
                     <ul className="cart-items">
                         {cartItems.map(item=>(
                             <li key={item._id}>
@@ -55,14 +56,14 @@ export default class Cart extends Component{
                         <div>{item.title}</div>
                         <div className="right">
                            {/* {formatCurrency(item.price)} *{item.count}{" "} */}
-                           <button className="button" onClick={this.props.removeFromCart(item)}>Remove</button>
+                           <button className="button primary" onClick={this.props.removeFromCart(item)}>Remove</button>
                         </div>
                         
                                 </div>
                             </li>
                         ))}
                     </ul>
-
+                    </Fade>
                 </div>
                 {cartItems.length!==0 &&( 
                 <div>
@@ -73,6 +74,7 @@ export default class Cart extends Component{
                     </div>
                 </div>
                 {this.state.showCheckout && (
+                    <Fade right cascade>
                     <div className="cart">
                 <form onSubmit={this.createOrder}>
                     <ul className="form-container">
@@ -93,7 +95,9 @@ export default class Cart extends Component{
                         </li>
                     </ul>
                 </form>
-            </div>)}
+            </div>
+            </Fade>
+            )}
             </div>
                 )}
                
