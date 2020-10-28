@@ -10,13 +10,19 @@ import Cart from "./components/Cart.js";
 class App extends React.Component {
   constructor(){
     super();
-    this.state={products:data.products,cartItems:[],size:"",sort:""}
+    this.state={
+      products:data.products,
+      cartItems:localStorage.getItem("cartItems")?JSON.parse(localStorage.getItem("cartItems")):[],//this make even refresh the cart item stay
+      size:"",
+      sort:""}
   }
-
+  createOrder=(order)=>{
+    alert("ned to "+order)
+  }
 removeFromCart=(product)=>{
   const cartItems =this.state.cartItems.slice();
   this.setState({cartItems:cartItems.filter(x=>x._id !==product._id)})
-  
+  localStorage.setItem("cartItems",JSON.stringify(cartItems.filter(x=>x._id !==product._id)));//this make even refresh the cart item stay
 }
 
   addToCart=(product)=>{
@@ -32,14 +38,15 @@ removeFromCart=(product)=>{
       cartItems.push({...product,count:1})
     }
 this.setState({carItems:cartItems})
+localStorage.setItem("cartItems",JSON.stringify(cartItems));//this make even refresh the cart item stay
   }
   sortProducts=(e)=>{
     const sort =e.target.value
     this.setState((state)=>({
       sort:sort,
       products:this.state.products.slice().sort((a,b)=>(
-        sort ==="lowest"?((a.price<b.price)?1:-1):
-        sort ==="highest"?((a.price>b.price)?1:-1):
+        sort ==="lowest"?((a.price>b.price)?1:-1):
+        sort ==="highest"?((a.price<b.price)?1:-1):
         (a._id>b._id)?1:-1)
       ),
     }));
@@ -75,7 +82,10 @@ this.setState({carItems:cartItems})
           <Products products={this.state.products} addToCart={this.addToCart}></Products>
         </div>
         <div className='sidebar'>
-        <Cart cartItems={this.state.cartItems} removeFromCart={this.removeFromCart}/>
+        <Cart cartItems={this.state.cartItems} 
+        removeFromCart={this.removeFromCart}
+        createOrder={this.createOrder}
+        />
         </div>
       </div>
       </main>
