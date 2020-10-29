@@ -6,7 +6,7 @@ import Cart from "./components/Cart.js";
 import store from './store.js';
 import { Provider } from "react-redux";
 
-//push error
+//push error for add redux
 class App extends React.Component {
   constructor(){
     super();
