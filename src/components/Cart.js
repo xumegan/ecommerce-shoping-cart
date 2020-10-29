@@ -35,6 +35,7 @@ export default class Cart extends Component{
         this.propes.createOrder(order)
     }
     render(){
+        console.log('test it')
         const {cartItems} = this.props;
         return(
             <div>
