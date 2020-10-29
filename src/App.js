@@ -1,5 +1,5 @@
 import React from "react";
-import data from "./data.json";
+//import data from "./data.json";
 import Products from "./components/Products.js";
 import Filter from "./components/Filter.js";
 import Cart from "./components/Cart.js";
@@ -11,10 +11,10 @@ class App extends React.Component {
   constructor(){
     super();
     this.state={
-      products:data.products,
+      //products:data.products,
       cartItems:localStorage.getItem("cartItems")?JSON.parse(localStorage.getItem("cartItems")):[],//this make even refresh the cart item stay
-      size:"",
-      sort:""}
+     // size:"", //redux solve this
+     // sort:""}
   }
   createOrder=(order)=>{
     alert("ned to "+order)

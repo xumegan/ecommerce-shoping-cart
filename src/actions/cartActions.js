@@ -9,13 +9,8 @@ export const addToCart = (product) => (dispatch, getState) => {
       x.count++;
     }
   });
-  if (!alreadyExists) {
-    cartItems.push({ ...product, count: 1 });
-  }
-  dispatch({
-    type: ADD_TO_CART,
-    payload: { cartItems },
-  });
+  if (!alreadyExists) { cartItems.push({ ...product, count: 1 });}
+  dispatch({type: ADD_TO_CART,payload: { cartItems },});
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
 };
 
