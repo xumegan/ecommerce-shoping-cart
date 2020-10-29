@@ -101,6 +101,6 @@ class Products extends Component {
   }
 }
 export default connect(
-  (state) => ({ products: state.products.filteredItems }),
+  (state) => ({ products: state.products.filteredItems }), //just show the the filtered product
   {fetchProducts,addToCart,})(Products);
     
