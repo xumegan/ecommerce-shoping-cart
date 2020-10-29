@@ -46,7 +46,6 @@ class Cart extends Component {
           </div>
         )}
 
-<<<<<<< HEAD
         {order && (
           <Modal isOpen={true} onRequestClose={this.closeModal}>
             <Zoom>
@@ -91,45 +90,6 @@ class Cart extends Component {
               </div>
             </Zoom>
           </Modal>
-=======
-
-export default class Cart extends Component{
-    constructor(props){
-        super(props);
-        this.state={
-            showCheckout:false,
-            name:"",
-            email:"",
-            adress:""
-    }
-    }
-
-    handleInput=(e)=>{
-        this.setState({[e.target.name]:e.target.value})
-    }
-
-    createOrder=(e)=>{
-        e.preventDefault();
-        const order={
-            name:this.state.name,
-            email:this.state.email,
-            adress:this.state.adress,
-            cartItems:this.props.cartItems,
-        }
-        this.propes.createOrder(order)
-    }
-    render(){
-        console.log('test it')
-        const {cartItems} = this.props;
-        return(
-            <div>
-{cartItems.length === 0?(
-<div className="cart cart-header">Cart is empty </div>
-    ):(
-    <div className="cart cart-header">
-        You have {cartItems.length} in the cart{""}
-        </div>
->>>>>>> products-backend
         )}
         <div>
           <div className="cart">
