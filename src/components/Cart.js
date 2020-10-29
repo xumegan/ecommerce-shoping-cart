@@ -49,9 +49,7 @@ class Cart extends Component {
         {order && (
           <Modal isOpen={true} onRequestClose={this.closeModal}>
             <Zoom>
-              <button className="close-modal" onClick={this.closeModal}>
-                x
-              </button>
+              <button className="close-modal" onClick={this.closeModal}>x</button> 
               <div className="order-details">
                 <h3 className="success-message">Your order has been placed.</h3>
                 <h2>Order {order._id}</h2>
@@ -80,9 +78,7 @@ class Cart extends Component {
                     <div>Cart Items:</div>
                     <div>
                       {order.cartItems.map((x) => (
-                        <div>
-                          {x.count} {" x "} {x.title}
-                        </div>
+                        <div>{x.count} {" x "} {x.title}</div> 
                       ))}
                     </div>
                   </li>
@@ -97,9 +93,7 @@ class Cart extends Component {
               <ul className="cart-items">
                 {cartItems.map((item) => (
                   <li key={item._id}>
-                    <div>
-                      <img src={item.image} alt={item.title}></img>
-                    </div>
+                    <div><img src={item.image} alt={item.title}/></div>
                     <div>
                       <div>{item.title}</div>
                       <div className="right">
@@ -107,9 +101,7 @@ class Cart extends Component {
                         <button
                           className="button"
                           onClick={() => this.props.removeFromCart(item)}
-                        >
-                          Remove
-                        </button>
+                        >Remove</button> 
                       </div>
                     </div>
                   </li>
@@ -123,18 +115,9 @@ class Cart extends Component {
                 <div className="total">
                   <div>
                     Total:{" "}
-                    {formatCurrency(
-                      cartItems.reduce((a, c) => a + c.price * c.count, 0)
-                    )}
+                    {formatCurrency(cartItems.reduce((a, c) => a + c.price * c.count, 0))}
                   </div>
-                  <button
-                    onClick={() => {
-                      this.setState({ showCheckout: true });
-                    }}
-                    className="button primary"
-                  >
-                    Proceed
-                  </button>
+                  <button className="button primary" onClick={() => {this.setState({ showCheckout: true });}}>Proceed</button>
                 </div>
               </div>
               {this.state.showCheckout && (
@@ -144,35 +127,18 @@ class Cart extends Component {
                       <ul className="form-container">
                         <li>
                           <label>Email</label>
-                          <input
-                            name="email"
-                            type="email"
-                            required
-                            onChange={this.handleInput}
-                          ></input>
+                          <input name="email" type="email" onChange={this.handleInput} required />
                         </li>
                         <li>
                           <label>Name</label>
-                          <input
-                            name="name"
-                            type="text"
-                            required
-                            onChange={this.handleInput}
-                          ></input>
+                          <input name="name" type="text" onChange={this.handleInput}required/>     
                         </li>
                         <li>
                           <label>Address</label>
-                          <input
-                            name="address"
-                            type="text"
-                            required
-                            onChange={this.handleInput}
-                          ></input>
+                          <input name="address" type="text" onChange={this.handleInput} required/>
                         </li>
                         <li>
-                          <button className="button primary" type="submit">
-                            Checkout
-                          </button>
+                          <button className="button primary" type="submit"> Checkout</button>
                         </li>
                       </ul>
                     </form>

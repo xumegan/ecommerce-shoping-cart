@@ -28,9 +28,7 @@ class Filter extends Component {
           Filter{" "}
           <select
             value={this.props.size}
-            onChange={(e) =>
-              this.props.filterProducts(this.props.products, e.target.value)
-            }
+            onChange={(e) => this.props.filterProducts(this.props.products, e.target.value)}  
           >
             <option value="">ALL</option>
             <option value="XS">XS</option>
