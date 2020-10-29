@@ -188,9 +188,6 @@ class Cart extends Component {
 }
 
 export default connect(
-  (state) => ({
-    order: state.order.order,
-    cartItems: state.cart.cartItems,
-  }),
+  (state) => ({order: state.order.order, cartItems: state.cart.cartItems,}),
   { removeFromCart, createOrder, clearOrder }
 )(Cart);
