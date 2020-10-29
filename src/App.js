@@ -3,8 +3,8 @@ import data from "./data.json";
 import Products from "./components/Products.js";
 import Filter from "./components/Filter.js";
 import Cart from "./components/Cart.js";
-
-
+import store from './store.js';
+import { Provider } from "react-redux";
 
 //push error
 class App extends React.Component {
@@ -64,6 +64,7 @@ localStorage.setItem("cartItems",JSON.stringify(cartItems));//this make even ref
    }
   render(){
     return (
+      <Provider store={store}>
     <div className="grid-container">
       <header className="App-header">
         <a href="/">React Shoppin Cart</a>
@@ -91,6 +92,7 @@ localStorage.setItem("cartItems",JSON.stringify(cartItems));//this make even ref
       </main>
        <footer>All right is reserved</footer>
     </div>
+    </Provider>
   );
 }
 }
