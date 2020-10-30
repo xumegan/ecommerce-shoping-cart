@@ -51,10 +51,6 @@ class Orders extends Component {
   }
 }
 export default connect(
-  (state) => ({
-    orders: state.order.orders,
-  }),
-  {
-    fetchOrders,
-  }
+  (state) => ({ orders: state.order.orders,}),
+  {fetchOrders,} 
 )(Orders);
