@@ -35,19 +35,13 @@ class Products extends Component {
               {this.props.products.map((product) => (
                 <li key={product._id}>
                   <div className="product">
-                    <a
-                      href={"#" + product._id}
-                      onClick={() => this.openModal(product)}
-                    >
+                    <a href={"#" + product._id} onClick={() => this.openModal(product)}>
                       <img src={product.image} alt={product.title}></img>
                       <p>{product.title}</p>
                     </a>
                     <div className="product-price">
                       <div>{formatCurrency(product.price)}</div>
-                      <button
-                        onClick={() => this.props.addToCart(product)}
-                        className="button primary"
-                      >
+                      <button onClick={() => this.props.addToCart(product)} className="button primary">
                         Add To Cart
                       </button>
                     </div>
@@ -60,15 +54,11 @@ class Products extends Component {
         {product && (
           <Modal isOpen={true} onRequestClose={this.closeModal}>
             <Zoom>
-              <button className="close-modal" onClick={this.closeModal}>
-                x
-              </button>
+              <button className="close-modal" onClick={this.closeModal}> x </button>
               <div className="product-details">
                 <img src={product.image} alt={product.title}></img>
                 <div className="product-details-description">
-                  <p>
-                    <strong>{product.title}</strong>
-                  </p>
+                  <p> <strong>{product.title}</strong></p>
                   <p>{product.description}</p>
                   <p>
                     Avaiable Sizes:{" "}
@@ -101,6 +91,5 @@ class Products extends Component {
   }
 }
 export default connect(
-  (state) => ({ products: state.products.filteredItems }), //just show the the filtered product
+  (state) => ({ products: state.products.filteredItems }),
   {fetchProducts,addToCart,})(Products);
-    

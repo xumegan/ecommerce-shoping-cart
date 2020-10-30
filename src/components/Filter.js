@@ -16,7 +16,10 @@ class Filter extends Component {
           <select
             value={this.props.sort}
             onChange={(e) =>
-              this.props.sortProducts( this.props.filteredProducts, e.target.value)  
+              this.props.sortProducts(
+                this.props.filteredProducts,
+                e.target.value
+              )
             }
           >
             <option value="latest">Latest</option>
@@ -28,7 +31,9 @@ class Filter extends Component {
           Filter{" "}
           <select
             value={this.props.size}
-            onChange={(e) => this.props.filterProducts(this.props.products, e.target.value)}  
+            onChange={(e) =>
+              this.props.filterProducts(this.props.products, e.target.value)
+            }
           >
             <option value="">ALL</option>
             <option value="XS">XS</option>
@@ -50,5 +55,8 @@ export default connect(
     products: state.products.items,
     filteredProducts: state.products.filteredItems,
   }),
-  {filterProducts,sortProducts, }
- )(Filter);  
+  {
+    filterProducts,
+    sortProducts,
+  }
+)(Filter);

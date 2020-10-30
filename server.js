@@ -23,7 +23,7 @@ mongoose.connect(
 const Product = mongoose.model(
   "products",
   new mongoose.Schema({
-    _id: { type: String, default: shortid.generate },
+    _id: { type: String, default: shortid.generate },//auto generate id
     title: String,
     description: String,
     image: String,
@@ -42,7 +42,7 @@ app.get("/api/products", async (req, res) => {
 //for create products
 app.post("/api/products", async (req, res) => {
   const newProduct = new Product(req.body);
-  const savedProduct = await newProduct.save();
+  const savedProduct = await newProduct.save();//save it to the database
   res.send(savedProduct);
 });
 
@@ -51,45 +51,45 @@ app.delete("/api/products/:id", async (req, res) => {
   res.send(deletedProduct);
 });
 
- const Order = mongoose.model(
-   "order",
-   new mongoose.Schema(
-     {
-       _id: { type: String,default: shortid.generate, },      
-       email: String,
-       name: String,
-       address: String,
-       total: Number,
-        cartItems: [{ _id: String,title: String,price: Number,count: Number,},], 
-    },
-    {timestamps: true,} //auto add create at and update at
-  )
-);
+//  const Order = mongoose.model(
+//    "order",
+//    new mongoose.Schema(
+//      {
+//        _id: { type: String,default: shortid.generate, },      
+//        email: String,
+//        name: String,
+//        address: String,
+//        total: Number,
+//         cartItems: [{ _id: String,title: String,price: Number,count: Number,},], 
+//     },
+//     {timestamps: true,} //auto add create at and update at
+//   )
+// );
 
 //this insert a new item to the database
-app.post("/api/orders", async (req, res) => {
-  if ( //check client data, all required exsit
-    !req.body.name ||
-    !req.body.email ||
-    !req.body.address ||
-    !req.body.total ||
-    !req.body.cartItems
-  ) {
-    return res.send({ message: "Data is required." });
-  }
-  const order = await Order(req.body).save(); //create an order and save to the database
-  res.send(order);
-});
+// app.post("/api/orders", async (req, res) => {
+//   if ( //check client data, all required exsit
+//     !req.body.name ||
+//     !req.body.email ||
+//     !req.body.address ||
+//     !req.body.total ||
+//     !req.body.cartItems
+//   ) {
+//     return res.send({ message: "Data is required." });
+//   }
+//   const order = await Order(req.body).save(); //create an order and save to the database
+//   res.send(order);
+// });
 
-app.get("/api/orders", async (req, res) => {
-  const orders = await Order.find({});
-  res.send(orders);
-});
+// app.get("/api/orders", async (req, res) => {
+//   const orders = await Order.find({});
+//   res.send(orders);
+// });
 
-app.delete("/api/orders/:id", async (req, res) => {
-  const order = await Order.findByIdAndDelete(req.params.id);
-  res.send(order);
-});
+// app.delete("/api/orders/:id", async (req, res) => {
+//   const order = await Order.findByIdAndDelete(req.params.id);
+//   res.send(order);
+// });
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log("serve at http://localhost:5000"));

@@ -6,7 +6,7 @@ export const addToCart = (product) => (dispatch, getState) => { //getState is ge
   
   cartItems.forEach((x) => {if (x._id === product._id) {alreadyExists = true; x.count++; }});
   
-  if (!alreadyExists) { cartItems.push({ ...product, count: 1 });}
+  if (!alreadyExists) { cartItems.push({ ...product, count: 1 });} //add one item to the cart
   dispatch({type: ADD_TO_CART,payload: { cartItems },});
   localStorage.setItem("cartItems", JSON.stringify(cartItems));//update localsstorage
 };
